@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pixel Login</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=VT323&display=swap" rel="stylesheet">
+
+<style>
+
+/* ===== Retro Pixel Cursor ===== */
+* {
+  cursor: url("pixel-arrow.cur"), auto;
+  box-sizing: border-box;
+}
+
+/* ===== Body ===== */
+body{
+  margin:0;
+  height:100vh;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  font-family:'VT323', monospace;
+  overflow:hidden;
+  position: relative;
+}
+
+/* ===== 🎥 Background Video ===== */
+#bg-video{
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: -1;
+}
+
+/* ===== Login Window ===== */
+.popup{
+  width:340px;
+  background:#184CA2;
+  border:6px solid #0f3576;
+  box-shadow:8px 8px 0 rgba(0,0,0,0.25);
+  color:white;
+}
+
+/* ===== Window Top Bar ===== */
+.window-bar{
+  background:#123a82;
+  padding:8px 10px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  border-bottom:4px solid #0f3576;
+  font-family:'Press Start 2P';
+  font-size:10px;
+}
+
+.window-controls{
+  display:flex;
+  gap:6px;
+}
+
+.window-btn{
+  width:18px;
+  height:18px;
+  background:#e6e6e6;
+  color:black;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:12px;
+  border:2px solid #888;
+  cursor:pointer;
+}
+
+.window-btn:active{
+  transform:translateY(2px);
+}
+
+/* ===== Content Area ===== */
+.popup-content{
+  padding:24px;
+}
+
+.title{
+  text-align:center;
+  margin-bottom:20px;
+  font-family:'Press Start 2P';
+  font-size:12px;
+}
+
+/* Input Fields */
+.pixel-input{
+  width:100%;
+  padding:10px;
+  border:4px solid #0f3576;
+  background:#f4efe6;
+  font-family:'VT323';
+  font-size:20px;
+  margin-bottom:18px;
+  outline:none;
+}
+
+/* Login Button */
+.pixel-btn{
+  width:100%;
+  padding:12px;
+  border:4px solid #0f3576;
+  background:#75A148;
+  font-family:'Press Start 2P';
+  font-size:11px;
+  color:white;
+}
+
+.pixel-btn:active{
+  transform:translateY(3px);
+}
+
+/* Links */
+.extra-links{
+  margin-top:14px;
+  text-align:center;
+  font-size:14px;
+}
+
+.extra-links a{
+  color:white;
+  text-decoration:none;
+  display:block;
+  margin-top:6px;
+}
+
+.extra-links a:hover{
+  color:#f2b6c6;
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- 🎥 Background Video -->
+<video autoplay muted loop playsinline id="bg-video">
+  <source src="Untitled design.mp4" type="video/mp4">
+</video>
+
+<div class="popup">
+
+  <div class="window-bar">
+    <span>Player Login</span>
+    <div class="window-controls">
+      <div class="window-btn">–</div>
+      <div class="window-btn">×</div>
+    </div>
+  </div>
+
+  <div class="popup-content">
+
+    <div class="title">Welcome Back 🌸</div>
+
+    <input type="text" class="pixel-input" placeholder="Username">
+    <input type="password" class="pixel-input" placeholder="Password">
+
+    <button class="pixel-btn">Start Quest ✨</button>
+
+    <div class="extra-links">
+      <a href="#">Create an Account</a>
+      <a href="#">Forgot Password?</a>
+    </div>
+
+  </div>
+</div>
+
+</body>
+</html>
