@@ -159,7 +159,6 @@ body::before{
   color:#ff4fa3;
 }
 
-/* ✅ Only new styling added for reset button */
 .reset-btn{
   margin-top:15px;
   padding:10px 20px;
@@ -234,8 +233,24 @@ body::before{
       XP: <span id="xpText">0</span>
     </div>
 
-    <!-- ✅ Reset Button Added -->
     <button class="reset-btn" onclick="resetXP()">Reset XP</button>
+
+    <!-- ✅ Chatbot Section -->
+    <div style="margin-top:25px; padding-top:20px; border-top:2px solid #ff4fa3;">
+      <h3 style="font-family:'Press Start 2P'; font-size:12px; margin-bottom:15px;">
+        Chatbot
+      </h3>
+
+      <a href="https://gamefiedapp.streamlit.app/#pixel-ai-companion" target="_blank" style="text-decoration:none;">
+        <button class="reset-btn" style="margin-bottom:10px;">Open Pixel AI</button>
+      </a>
+
+      <!-- ✅ Achievements Option Added -->
+      <a href="achie.html" style="text-decoration:none;">
+        <button class="reset-btn">Achievements</button>
+      </a>
+    </div>
+
   </div>
 
 </div>
@@ -267,7 +282,6 @@ function completeTask(index){
   renderTasks();
 }
 
-/* ✅ Only new function added */
 function resetXP(){
   xp = 0;
   save();
