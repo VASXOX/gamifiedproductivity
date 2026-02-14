@@ -159,7 +159,6 @@ body::before{
   color:#ff4fa3;
 }
 
-/* ✅ Only new styling added for reset button */
 .reset-btn{
   margin-top:15px;
   padding:10px 20px;
@@ -230,12 +229,36 @@ body::before{
   <div class="profile">
     <img src="POOCH.jpeg">
     <h3>Pixel Hero</h3>
+
     <div class="xp-box">
       XP: <span id="xpText">0</span>
     </div>
 
-    <!-- ✅ Reset Button Added -->
     <button class="reset-btn" onclick="resetXP()">Reset XP</button>
+
+    <!-- ✅ Chatbot Section Added -->
+    <div style="margin-top:25px; padding-top:20px; border-top:2px solid #ff4fa3;">
+      <h3 style="font-family:'Press Start 2P'; font-size:12px; margin-bottom:15px;">
+        Chatbot
+      </h3>
+
+      <a href="https://gamefiedapp.streamlit.app/#pixel-ai-companion" target="_blank">
+        <button style="
+          padding:10px 20px;
+          border:none;
+          border-radius:20px;
+          background:#ff4fa3;
+          border:2px solid #ff2e92;
+          color:white;
+          font-family:'VT323';
+          font-size:18px;
+          cursor:pointer;
+        ">
+          Open Pixel AI
+        </button>
+      </a>
+    </div>
+
   </div>
 
 </div>
@@ -267,7 +290,6 @@ function completeTask(index){
   renderTasks();
 }
 
-/* ✅ Only new function added */
 function resetXP(){
   xp = 0;
   save();
