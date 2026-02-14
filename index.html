@@ -1,179 +1,104 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Pixel Login</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Home Page</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=VT323&display=swap" rel="stylesheet">
+  <style>
+    body, html {
+      margin: 0;
+      height: 100%;
+      overflow: hidden;
+    }
 
-<style>
+    /* 🌙 Dark Night Background */
+    body {
+      background: radial-gradient(circle at top, #232d48 0%, #232d48 100%);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+    }
 
-/* ===== Retro Pixel Cursor ===== */
-* {
-  cursor: url("pixel-arrow.cur"), auto;
-  box-sizing: border-box;
-}
+    /* ❄️ Image Zoom (1.5s) */
+    @keyframes zoomInOut {
+      0%   { transform: scale(1); }
+      50%  { transform: scale(1.07); }
+      100% { transform: scale(1); }
+    }
 
-/* ===== Body ===== */
-body{
-  margin:0;
-  height:100vh;
-  display:flex;
-  justify-content:center;
-  align-items:center;
-  font-family:'VT323', monospace;
-  overflow:hidden;
-  position: relative;
-}
+    .center-img {
+      height: 70vh;
+      object-fit: cover;
+      position: relative;
+      z-index: 2;
+      animation: zoomInOut 1.5s ease-in-out infinite;
+    }
 
-/* ===== 🎥 Background Video ===== */
-#bg-video{
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  z-index: -1;
-}
+    /* ❄️ Snowflake */
+    .snowflake {
+      position: absolute;
+      top: -10px;
+      color: rgb(222, 207, 175);
+      font-size: 10px;
+      opacity: 0.8;
+      pointer-events: none;
+      z-index: 1;
+      animation: fall linear infinite, drift ease-in-out infinite;
+    }
 
-/* ===== Login Window ===== */
-.popup{
-  width:340px;
-  background:#184CA2;
-  border:6px solid #0f3576;
-  box-shadow:8px 8px 0 rgba(0,0,0,0.25);
-  color:white;
-}
+    /* Fall down */
+    @keyframes fall {
+      0% {
+        transform: translateY(0);
+        opacity: 0.8;
+      }
+      100% {
+        transform: translateY(110vh);
+        opacity: 0.2;
+      }
+    }
 
-/* ===== Window Top Bar ===== */
-.window-bar{
-  background:#123a82;
-  padding:8px 10px;
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  border-bottom:4px solid #0f3576;
-  font-family:'Press Start 2P';
-  font-size:10px;
-}
+    /* Slight sideways drift */
+    @keyframes drift {
+      0% { margin-left: 0px; }
+      50% { margin-left: 30px; }
+      100% { margin-left: 0px; }
+    }
 
-.window-controls{
-  display:flex;
-  gap:6px;
-}
-
-.window-btn{
-  width:18px;
-  height:18px;
-  background:#e6e6e6;
-  color:black;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  font-size:12px;
-  border:2px solid #888;
-  cursor:pointer;
-}
-
-.window-btn:active{
-  transform:translateY(2px);
-}
-
-/* ===== Content Area ===== */
-.popup-content{
-  padding:24px;
-}
-
-.title{
-  text-align:center;
-  margin-bottom:20px;
-  font-family:'Press Start 2P';
-  font-size:12px;
-}
-
-/* Input Fields */
-.pixel-input{
-  width:100%;
-  padding:10px;
-  border:4px solid #0f3576;
-  background:#f4efe6;
-  font-family:'VT323';
-  font-size:20px;
-  margin-bottom:18px;
-  outline:none;
-}
-
-/* Login Button */
-.pixel-btn{
-  width:100%;
-  padding:12px;
-  border:4px solid #0f3576;
-  background:#75A148;
-  font-family:'Press Start 2P';
-  font-size:11px;
-  color:white;
-}
-
-.pixel-btn:active{
-  transform:translateY(3px);
-}
-
-/* Links */
-.extra-links{
-  margin-top:14px;
-  text-align:center;
-  font-size:14px;
-}
-
-.extra-links a{
-  color:white;
-  text-decoration:none;
-  display:block;
-  margin-top:6px;
-}
-
-.extra-links a:hover{
-  color:#f2b6c6;
-}
-
-</style>
+  </style>
 </head>
 
 <body>
 
-<!-- 🎥 Background Video -->
-<video autoplay muted loop playsinline id="bg-video">
-  <source src="Untitled design.mp4" type="video/mp4">
-</video>
+  <a href="login.html">
+    <img src="ra.png" alt="Click to Login" class="center-img">
+  </a>
 
-<div class="popup">
+  <script>
+    function createSnow() {
+      const snow = document.createElement("div");
+      snow.classList.add("snowflake");
+      snow.innerHTML = "❄";
 
-  <div class="window-bar">
-    <span>Player Login</span>
-    <div class="window-controls">
-      <div class="window-btn">–</div>
-      <div class="window-btn">×</div>
-    </div>
-  </div>
+      const size = 8 + Math.random() * 12;
+      snow.style.fontSize = size + "px";
 
-  <div class="popup-content">
+      snow.style.left = Math.random() * window.innerWidth + "px";
 
-    <div class="title">Welcome Back 🌸</div>
+      const duration = 6 + Math.random() * 5;
+      snow.style.animationDuration = duration + "s, 3s";
 
-    <input type="text" class="pixel-input" placeholder="Username">
-    <input type="password" class="pixel-input" placeholder="Password">
+      document.body.appendChild(snow);
 
-    <button class="pixel-btn">Start Quest ✨</button>
+      setTimeout(() => {
+        snow.remove();
+      }, duration * 1000);
+    }
 
-    <div class="extra-links">
-      <a href="#">Create an Account</a>
-      <a href="#">Forgot Password?</a>
-    </div>
-
-  </div>
-</div>
+    setInterval(createSnow, 150);
+  </script>
 
 </body>
 </html>
